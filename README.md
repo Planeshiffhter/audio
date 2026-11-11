@@ -1,5 +1,25 @@
 # Audio
 
+## Website source and reuse
+
+This repository now includes the voice website and generation code, as well as
+the audio samples below. The current ChatGPT-hosted site remains available at
+[Rejoan Voice Studio](https://rejoan-voice-studio.kawahorejoan.chatgpt.site).
+This backup does not migrate, replace, stop, or delete that site.
+
+- [Website and queue engine source](voice-studio/)
+- [Voice tools and installation instructions](voice-tools/)
+- [Restore and reuse guide](docs/REUSE.md)
+- [Future AWS migration guide](docs/AWS-MIGRATION.md)
+- [Dependency and model sources](docs/THIRD-PARTY.md)
+
+The current website backend uses ChatGPT Sites authentication and Cloudflare R2.
+It is backed up here for reuse; it is **not yet a standalone AWS deployment**.
+The AWS guide explains the remaining adapters. Secrets, uploaded voice samples,
+private scripts, generated user jobs, caches and model weights are excluded.
+The pinned model downloaders restore the weights without committing gigabytes
+of binary files to GitHub.
+
 ## Revised narration — version 2
 
 Two new AI-generated takes use the larger Chatterbox Turbo model and more conversational wording. Both use the supplied voice reference.

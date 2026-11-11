@@ -1,0 +1,12 @@
+work/
+engine/.runtime.json
+engine/__pycache__/
+engine/*.log
+engine/*.pid
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+*.tar.gz
+*.tar

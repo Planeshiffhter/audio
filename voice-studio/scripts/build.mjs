@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root = process.cwd();
+const html = fs.readFileSync(path.join(root, 'frontend.html'), 'utf8');
+const worker = fs.readFileSync(path.join(root, 'worker/index.mjs'), 'utf8');
+const marker = 'const HTML = /*INJECT_HTML*/ "";';
+if (!worker.includes(marker)) throw new Error('Missing HTML injection marker');
+const output = worker.replace(marker, `const HTML = ${JSON.stringify(html)};`);
+fs.mkdirSync(path.join(root, 'dist/server'), { recursive: true });
+fs.mkdirSync(path.join(root, 'dist/.openai'), { recursive: true });
+fs.writeFileSync(path.join(root, 'dist/server/index.js'), output);
+fs.copyFileSync(path.join(root, '.openai/hosting.json'), path.join(root, 'dist/.openai/hosting.json'));
+console.log('Built voice studio Worker and embedded frontend.');
